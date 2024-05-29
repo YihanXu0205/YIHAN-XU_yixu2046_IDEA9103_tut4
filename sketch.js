@@ -79,12 +79,12 @@ class Circle {
   // Update the circle size for animation
   update() {
     if (this.growing) {
-      this.size += 1;
+      this.size += 0.5; // Reduce the growth rate
       if (this.size > 200) {
         this.growing = false;
       }
     } else {
-      this.size -= 1;
+      this.size -= 0.5; // Reduce the shrink rate
       if (this.size < 50) {
         this.growing = true;
       }
@@ -95,7 +95,7 @@ class Circle {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
-  frameRate(30); // Set frame rate for smoother animation
+  frameRate(15); // Set a lower frame rate for slower animation
 }
 
 function draw() {
