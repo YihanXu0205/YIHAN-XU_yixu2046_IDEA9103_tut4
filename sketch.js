@@ -114,6 +114,7 @@ function drawBackgroundPattern() {
   bgGraphics.background(20, 10, 0);
   let bgCircles = 100;
   for (let i = 0; i < bgCircles; i++) {
+    bgGraphics.noStroke(); // Ensure no stroke for background circles
     bgGraphics.fill(randomWarmColor(50));
     bgGraphics.ellipse(random(width), random(height), random(50, 150));
   }
