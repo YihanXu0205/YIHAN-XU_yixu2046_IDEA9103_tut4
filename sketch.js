@@ -1,4 +1,5 @@
 let circles = [];
+let bgGraphics; // Variable to store the static background
 
 //Defines a Circle class for creating and managing circular objects
 class Circle {
@@ -96,10 +97,12 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
   frameRate(15); // Set a lower frame rate for slower animation
+  bgGraphics = createGraphics(windowWidth, windowHeight); // Create an off-screen graphics buffer
+  drawBackgroundPattern(); // Draw the background pattern once
 }
 
 function draw() {
-  drawBackgroundPattern();
+  image(bgGraphics, 0, 0); // Draw the static background from the buffer
   for (let circle of circles) {
     circle.update();
     circle.draw();
@@ -108,11 +111,11 @@ function draw() {
 
 // Defines the background pattern
 function drawBackgroundPattern() {
-  background(20, 10, 0);
+  bgGraphics.background(20, 10, 0);
   let bgCircles = 100;
   for (let i = 0; i < bgCircles; i++) {
-    fill(randomWarmColor(50));
-    ellipse(random(width), random(height), random(50, 150));
+    bgGraphics.fill(randomWarmColor(50));
+    bgGraphics.ellipse(random(width), random(height), random(50, 150));
   }
 }
 
